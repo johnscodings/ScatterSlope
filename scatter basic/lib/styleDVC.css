@@ -1,0 +1,526 @@
+	/* =====================   CSS RESET SECTION ==== */
+	/* http://meyerweb.com/eric/tools/css/reset/ 
+	   v2.0b2 | 201101
+	   NOTE: THIS IS A BETA VERSION (see previous line)
+	   USE WITH CAUTION AND TEST WITH ABANDON */
+	
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed, 
+	figure, figcaption, footer, header, hgroup, 
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video
+	{
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+	
+	
+	
+	@font-face
+	{
+		font-family: 'open_sanslight';		
+		src: url('fonts/OpenSans-Light-webfont.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+	}
+	
+	
+	
+	@font-face
+	{
+		font-family: 'open_sansregular';		
+		src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+	}
+	
+	
+	
+	@font-face
+	{
+		font-family: 'open_sansregular';		
+		src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+	}
+		
+	
+	
+	
+	body
+	{
+	  font: 10px sans-serif;
+	}
+	
+	
+	
+	.axis path,
+	.axis line
+	{
+	  fill: none;
+	  stroke: #E8E8E8;
+	  shape-rendering: crispEdges;
+	}
+	
+	
+	
+	.x.axis text,
+	.y.axis text
+	{
+		font-family: 'open_sansregular';		
+		src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');		
+		text-decoration: none;
+		font-size:1.5em;
+		fill:#666;
+	}
+	
+	
+	.dot
+	{
+	  stroke: #000;
+	}
+	
+	
+	
+	
+	#selectXVariable,
+	#selectxAxisGroup_chosen
+	{
+		position:absolute;
+		right:200px;
+		bottom:100px;	
+	}
+	
+	
+	
+	
+	#selectYVariable,
+	#selectyAxisGroup_chosen
+	{
+		position:absolute;
+		left:210px;
+		top:70px;	
+	}
+	
+	
+	
+	
+	#axisLimitType
+	{
+		position:absolute;
+		right:40px;
+		top:75px;	
+	}
+
+
+
+
+	#axisType
+	{
+		position:absolute;
+		right:55px;
+		top:315px;	
+	}
+
+
+
+
+	#dataGroups,
+	#selectDataGroup_chosen
+	{
+		position:absolute;
+		left:160px;
+		top:13px;	
+	}
+	
+	
+
+	
+	#yAxisLabel,
+	#xAxisLabel
+	{
+		text-decoration: none;
+		font-size:1.4em;
+		fill:#666;
+		font-family: 'open_sansregular';		
+		src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');	
+	}
+	
+	
+	
+	#axisLimitsLabel,
+	#equalityLineLabel, 
+	#shadowsLabel,
+	#regressionLineLabel,
+	#regressionFilteredLineLabel,
+	#axisTypeLabel,
+	#dataGroupLabel
+	{
+		text-decoration: none;
+		font-size:1.4em;
+		fill:#666;
+		font-family: 'open_sansregular';		
+		src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');	
+	}
+	
+	
+	
+	
+	#eqtnText,
+	#eqtnTextFiltered
+	{
+		text-decoration: none;
+		font-size:1.5em;
+		fill:#666;
+		font-family: 'open_sansregular';		
+		src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');	
+	}
+	
+	
+	
+	#focusXAxis,	
+	#focusYAxis
+	{
+		stroke-width:0.2em;	
+		color:red;
+	}
+	
+	
+		
+	#xAxisTicks,
+	#yAxisTicks
+	{
+		stroke-width:0.1em;	
+    	stroke: #666;
+    	opacity: 0.1;
+	}
+	
+	
+	
+	#graphFrame
+	{
+		stroke-width:0.1em;	
+    	stroke: #666;
+    	opacity: 0.1;
+	}
+	
+	
+	
+	#equalityLine
+	{
+		stroke-width:0.3em;	/*
+    	stroke: black;*/
+    	opacity: 1.0;/*
+		clip-path:url(#clip);*/	/*
+		stroke-dasharray:10,5,10;*/
+	}
+	
+	
+	
+	#regressionLine,
+	#legendRegressionLine
+	{
+		stroke-width:0.3em;	
+    	/*stroke: red;*/
+    	opacity: 1.0;/*
+		clip-path:url(#clip);*/	/*
+		stroke-dasharray:10,5,10;*/
+	}
+	
+	
+	
+	#regressionFilteredLine,
+	#legendFilteredRegressionLine
+	{
+		stroke-width:0.3em;	
+    	/*stroke: blue;*/
+    	opacity: 1.0;/*
+		clip-path:url(#clip);*/	/*
+		stroke-dasharray:10,5,10;*/
+	}
+	
+	
+	#equalityLineCheck
+	{
+		position:absolute;
+		left:805px;
+		top:135px;
+	}
+	
+	
+	
+	
+	#regressionLineCheck
+	{
+		position:absolute;
+		left:725px;
+		top:355px;
+	}
+	
+	
+	
+	
+	#regressionFilteredLineCheck
+	{
+		position:absolute;
+		left:805px;
+		top:255px;
+	}
+	
+	
+	
+	
+	#shadowsCheck
+	{
+		position:absolute;
+		left:805px;
+		top:255px;
+	}
+	
+	
+	
+	#xAxisSlider
+	{
+		position:absolute;
+		bottom:50px;
+		width:544px;
+		height:10px;
+		display:inline;
+	}
+	
+	
+	
+	#yAxisSlider
+	{
+		position:absolute;
+		width:10px;
+		display:inline;
+	}
+	
+	
+	
+	#xAxis_minFilterValue,
+	#xAxis_maxFilterValue,
+	#yAxis_minFilterValue,
+	#yAxis_maxFilterValue
+	{
+		font-family: 'open_sansregular';		
+		src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');		
+		text-decoration: none;
+		font-size:1.4em;
+		fill:#666;
+	}
+	
+	
+	
+	#switchBtn
+	{
+		position:absolute;
+		left:18px;
+		bottom:48px;
+		width:85px;
+	}
+	
+	
+		
+	
+	#pin
+	{
+		position:absolute;
+		left:25px;
+		top:0px;
+		display:inline;
+		width:150px;
+		width:100px;
+		background-position: right;
+		opacity:1.0;
+		background: transparent url('images/onpin.svg') center top no-repeat;
+	}
+	
+	
+	
+	#pin:hover
+	{
+		float:right;
+		background:transparent url('images/orangepin.svg') center top no-repeat;
+		opacity:1.0;
+	}
+	
+	
+		
+	
+	#scale
+	{
+		position:absolute;
+		left:225px;
+		top:0px;
+		display:inline;
+		width:85px;
+		width:85px;
+		background-position: right;
+		opacity:0.5;
+		background: transparent url('images/offscale.svg') center top no-repeat;
+	}
+	
+	
+	
+	#scale:hover
+	{
+		float:right;
+		background:transparent url('images/orangescale.svg') center top no-repeat;
+		opacity:1.0;
+	}
+	
+
+
+	#container2
+	{
+		height:100%;		
+	}
+	
+		
+	
+	#equality
+	{
+		position:absolute;
+		left :225px;
+		top:0px;
+		display:inline;
+		width:85px;
+		width:85px;
+		background-position: right;
+		opacity:1.0;
+		background: transparent url('images/onequality.svg') center top no-repeat;
+	}
+	 
+	
+	
+	#equality:hover
+	{
+		float:right;
+		background:transparent url('images/orangeequality.svg') center top no-repeat;
+		opacity:1.0;
+	}
+	
+		
+	
+	#regression
+	{
+		position:absolute;
+		left :325px;
+		top:0px;
+		display:inline;
+		width:85px;
+		width:85px;
+		background-position: right;
+		opacity:1.0;
+		background: transparent url('images/onequation.svg') center top no-repeat;
+	}
+	
+		
+	
+	.panelHeader
+	{
+		font-family: 'open_sansregular';		
+		src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');		
+		text-decoration: none;
+		font-size:2.0em;
+		fill:#666;
+	}
+	
+	
+	.panel-body {		
+		padding: 15px;
+		background-color:white;
+		border-color:white;
+		border-width:1px;
+	}
+	
+	.panel-default {
+		border-color: white;
+		border-width:1px;
+	}
+	
+	.panel-default .panel-heading {
+		color: #333333;
+		background-color:white;
+		border-color: white;
+	}
+	
+	
+	h5{
+		font-family: 'open_sansregular';		
+		src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');		
+		text-decoration: none;
+		font-size:1.4em;
+		fill:#666;
+	}
+	
+	body {
+		color:#fafafa;
+		background-color:#fafafa;
+		border-color:#fafafa;
+	}
+	
+	
+	
+	.center
+	{
+		margin-left: auto;
+		margin-right: auto;
+		width: 99%;
+		background-color: #b0e0e6;
+	}
+	
+	
+	
+	#title
+	{
+		font-family: 'open_sansregular';		
+		src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');		
+		text-decoration: none;
+		font-size:2.0em;
+		fill:#666;
+		color:#4f4557;
+	}
+	
+/*	
+	
+	#equationDiv,
+	#equationFilteredDiv
+	{
+		width:150px;
+		height:25px;
+		background-color:white;
+		border-style:solid;
+		border-radius:5px;
+		border-width:1px;
+		display:inline;
+		padding:5px;
+		position:absolute;
+	}*/
+	
+	#footerRow
+	{
+		height:50px;
+	}
+	
+	
+	#page-header
+	{
+		height:10px;
+	}
+	
+	

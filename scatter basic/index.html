@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Prototype Scatter Plot </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css" media="screen">
+    <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css">
+
+    <link rel="stylesheet" href="./lib/jquery-ui.css" />
+    <link rel="stylesheet" href="./lib/jquery-ui-1.9.2.custom.min.css">
+    
+    <link rel="stylesheet" href="./lib/chosen.css">
+<!--    <link rel="stylesheet" href="./lib/styleDVC.css">-->
+    <link rel="stylesheet" href="./lib/globalStyle.css" />
+    
+    
+    
+    <style>
+	
+	
+		/*#regressionLine,*/
+		#regressionFilteredLine{
+			display:none;
+		}
+	
+	
+		.panel-heading{
+			display:none;
+		}
+		
+		
+		#selectxAxisGroup_chosen,
+		#selectyAxisGroup_chosen{
+			display:none;
+		}
+		
+		#equalityLine{
+			display:none;
+		}
+	
+		
+		.tick text {
+			font-family:"open_sansregular",sans-serif,Helvetica,Arial;
+            font-size: 12px;
+            fill: #666;
+			x:-6;
+		}
+		
+		@font-face {
+			font-family: 'open_sanslight';		
+			src: url('fonts/OpenSans-Light-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		
+		}
+		
+		@font-face {
+			font-family: 'open_sansitalic';		
+			src: url('fonts/OpenSans-Italic-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		
+		}
+		
+		@font-face {
+			font-family: 'open_sansregular';		
+			src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		
+		}
+		
+		@font-face {
+			font-family: 'open_sanssemibold';		
+			src: url('fonts/OpenSans-Semibold-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		
+		}
+		
+		.unit{
+		    font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            fill: #333333;
+            text-align: left;
+			width:130px;
+			height:20px;
+			display:block;
+			float:none;
+        }
+			
+		.axis path
+		{
+			fill: none;
+		}
+		.axis line
+		{
+			fill: none;
+			stroke: #ccc;
+			stroke-width: 0.1%
+		}
+		
+		
+		/* x-axis baseline; not to be confused with centreline. Can consider overlaying this with #centreline */
+        .axis path{		
+		 /* required */
+		{
+            fill: none;
+            stroke: #666;
+            shape-rendering: crispEdges;
+        }
+		
+		
+		
+		
+		
+		
+		
+		/*
+		body {
+			
+			color:#666;
+		}
+		
+		@font-face {
+			font-family: 'open_sanslight';		
+			src: url('fonts/OpenSans-Light-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		
+		}
+		
+		@font-face {
+			font-family: 'open_sansitalic';		
+			src: url('fonts/OpenSans-Italic-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		
+		}
+		
+		@font-face {
+			font-family: 'open_sansregular';		
+			src: url('fonts/OpenSans-Regular-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		
+		}
+		
+		@font-face {
+			font-family: 'open_sanssemibold';		
+			src: url('fonts/OpenSans-Semibold-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		
+		}
+		
+		#heading {
+			background-color:#FAFAFA;
+			color:white;	
+		}
+		
+		.lead {
+			color:#6f6f6f !important
+		}	
+		@media screen and (min-width: 768px) {
+		  .jumbotron h1,
+		  .jumbotron .h1 {
+			color:#6f6f6f;
+			font-family:"open_sanssemibold",sans-serif,Helvetica,Arial;
+			font-size: 40px !important;
+			margin-top:21px;
+			margin-bottom:10.5px;
+		  }
+		  
+		  .jumbotron p,
+		  .jumbotron .p {
+			font-size: 20px !important;
+		  }
+		}
+		
+		.jumbotron {
+			padding-top:0px !important;
+			font-size:
+		}	
+				
+		.social {
+			padding-top:25px;
+			padding-left:5px;
+			float:right;
+			opacity:0.5;
+			cursor:pointer;
+		}
+		
+		.social:hover {
+			opacity:1;
+				
+		}
+		
+		
+		#embedrow {
+			padding-bottom:10px;
+			
+		}
+		
+		
+		#close {
+			float:right;
+			opacity:0.5;
+			cursor:pointer;
+		}
+
+		#close:hover {
+			opacity:1;
+		}
+			
+		.axis path
+		{
+			fill: none;
+		}
+		.axis line
+		{
+			fill: none;
+			stroke: #ccc;
+			stroke-width: 0.1%
+		}
+	
+		
+		.tick text {
+			font-family:"open_sansregular",sans-serif,Helvetica,Arial;
+			font-size:20px;
+			fill:#666;
+			x:-6;
+		}
+		
+		#mainChart
+			{		
+	
+				width:100%;
+		
+			}
+			
+		#chart {
+		
+			height:600px;
+		
+		}
+		
+		#chart1 {
+				width:100%;
+		}
+		
+		#chart2 {
+				width:100%;
+		}
+		
+		#chart3 {
+				width:100%;
+		}				
+		
+		
+		#bar0 {
+			fill: #8dd3c7;	
+			opacity:0.7;	
+		}
+		
+		#bar1 {
+			fill: #bebada;
+			opacity:0.7;			
+		}
+		
+		.labels {
+			text-anchor:middle;
+			font-size:18px;
+		}
+		
+		
+		
+		
+		#birthYearLabel,
+		#mothersBirthYearLabel,
+		#or{
+			font-size:16px;
+			font-family:open_sanssemibold, Arial, Helvetica, sans-serif;
+			color:#666;
+		}
+		
+		
+		#paraGrp1Para1,
+		#paraGrp1Para2,
+		#paraGrp1Para3,
+		#paraGrp2Para1,
+		#paraGrp2Para2,
+		#paraGrp2Para3,
+		#paraGrp2Para4,
+		#paraGrp3Para1,
+		#paraGrp3Para2,
+		#paraGrp3Para3{
+	
+			font-size:14px;
+			font-family:open_sansregular, Arial, Helvetica, sans-serif;
+		}
+		
+		
+		.infoText{
+			display:none;	
+		}
+
+		.row {
+		
+			padding-top:0px;
+			padding-bottom:0px;
+		}
+		
+		label {
+			padding-bottom:20px;	
+			font-size:15px;
+		}
+	*/
+	
+	</style>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
+      <script src="../bower_components/respond/dest/respond.min.js"></script>
+    <![endif]-->
+    <script>
+
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-37894017-1']);
+		  _gaq.push(['_trackPageview']);
+		
+		
+		  (function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+    </script>
+	</head>
+
+	<body>
+
+	<div class="jumbotron" id="heading">
+    	
+        <div class="container">
+           
+     		<!-- Row 1 --> 
+      
+			<div class="row" id="heading">
+        
+        		<div class="col-sm-10 col-xs-11">
+            	
+           <!--     	<h1>Prototype Scatter Plot</h1>
+			        <p class="lead">Prototype Scatter Plot</p>-->
+                    
+          		</div><!--id="col-sm-10 col-xs-11"-->
+              <!--  
+				<div class="col-sm-2 col-xs-1" id="social">
+				
+                	<img class="social" id="twitter" src="images/twitter.svg"/>
+	        	  	<img class="social" id="face" src="images/facebook.svg"/>
+    		        <img class="social" id="embed" src="images/embed.svg"/>
+            
+				</div>-->
+			
+            </div><!--id="heading"-->
+		
+        </div><!--class="container"-->
+	
+    </div><!--class="jumbotron"-->
+    
+    <div class="container">
+   	
+    	<div class="row hide" id="embedrow">
+  			
+            <div class="col-sm-offset-6 col-sm-6 col-xs-12">
+
+            	<div id="embedbox">
+                	
+                    <img id="close" src="images/cross.svg"/>
+                    <label class="control-label" for="inputType"></label>
+                    <input type="text" class="form-control" id="inputType" value="ashe.html">
+				
+                </div><!-- end id="embedbox" -->      
+        
+			</div><!-- end id="col-sm-offset-6 col-sm-6 col-xs-12" -->   
+
+		</div><!-- end id="embedrow" -->     
+   
+   		<div class="row">
+           
+        	<div id="introDiv" class="col-sm-12 col-xs-12 show">                           
+            	<label id="introTitle"></label>                      
+            	<label id="introText"></label>                    
+            <!--	<label id="unfilteredEqtn"></label>                    
+            	<label id="filteredEqtn"></label>-->
+			</div><!-- end class="col-sm-12 col-xs-12" --> 
+	
+    	</div><!-- end class="row" --> 
+        
+                
+<!--         
+        <div class="row">
+                 
+            <div id="charttwo" class="col-sm-12 col-xs-12 show">     
+                 
+                <div class="panel panel-default">
+            
+                    <div class="panel-heading">
+                    
+                        <h4 class="panelHeader"></h4>
+                        
+                    </div>
+                    
+                    <div class="panel-body" id="introContainer">
+                                         
+                        <div id="intro">            
+                    
+                        </div> 
+
+                    </div><!-- id="introContainer"
+                
+                </div><!--  class="panel panel-default"
+            
+            </div><!==id="charttwo"
+        
+        </div>c	lass="row" -->
+                
+                
+        <div class="row">
+             
+			<div id="chartone" class="col-sm-12 col-xs-12 show">     
+             
+				<div class="panel panel-default">
+            
+					<div class="panel-heading">
+                
+                		<h4 class="panelHeader" id="panelHeader">Data Groups:</h4>
+                    
+					</div><!-- end class="panel-heading" --> 
+                    
+					<div class="panel-body" id="container">
+                    
+ 						<div id="chart1">
+                            
+            	    	</div>  <!--end id="chart1" -->        
+	       
+					</div><!--end panel-body -->
+		
+       	   		</div><!--end panel panel-default -->
+           
+			</div><!--end chartone   -->                                              
+         
+	</div> <!--end class="row" -->  
+	    
+    <div id="keypoints">
+        <p></p>
+    </div>
+
+   <div class="footer">        
+   </div>
+    
+         
+                
+<!--                
+	<div class="row">
+             
+        <div id="chartthree" class="col-sm-12 col-xs-12 show">     
+             
+            <div class="panel panel-default">
+                
+                <div class="panel-body" id="container3">
+                
+                	<p class="equations" id="unfilteredEqtnText"></p>
+                	<p class="equations" id="filteredEqtnText"></p>
+            
+            	</div> 
+        
+        	</div>
+    
+    	</div>
+
+    </div>
+    -->
+    
+    
+    
+    
+    
+    
+                
+<!--                
+	<div class="row">
+             
+        <div id="charttwo" class="col-sm-12 col-xs-12 show">     
+             
+            <div class="panel panel-default">
+
+                <div class="panel-body" id="container2">
+                                     
+                    <div id="controls">
+                        
+                        <div class="col-sm-6 col-xs-6" id="buttonsLeft"> </div>
+                        <div class="col-sm-6 col-xs-6" id="buttonsRight"> </div>
+                        <div class="col-sm-12 col-xs-12" id="tools"> </div>             
+                
+                	</div>
+                                     
+                    <div id="controls2">
+                                 
+                
+                	</div> 
+            
+            	</div> 
+        
+        	</div>
+    
+    	</div>
+
+    </div>-->
+
+    
+<!--    
+    
+	<div class="row" id="footerRow">
+    
+    	<div class="page-header" id="page-header">
+		</div>
+		
+        <br>        
+        <a href="http://www.ons.gov.uk/ons/interactive/index.html" target="_blank">See more from ONS Digital</a>
+        </p>
+        
+	</div>
+        
+    -->
+
+    
+    <script src="lib/jquery-1.10.1.min.js"></script>   
+	<script src="./lib/jquery-ui-1.9.2.custom.min.js"></script>
+ 	<script src="lib/modernizr.custom.56904.js"></script>
+    <script src="lib/d3.v3.min.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="./lib/chosen.jquery.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+	<script src="lib/pym.js" type="text/javascript"></script>
+
+    <script src="lib/script.js"></script>
+    
+  </body>
+</html>

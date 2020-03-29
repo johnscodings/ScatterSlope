@@ -1,0 +1,22 @@
+{
+	"vars":{
+		"Title":"Prototype Scatter Plot",
+		"dataGroups":[ "dataGroup1"  ],
+		"variables":[ 
+						[ "Median monthly rent" , "Median house price" ]
+					],
+		"Units":[ 
+						[ "£'000s" , "£'000s" ]
+					],
+		"axisLimitType":[ "Fixed" , "Data" ],
+		"axisType":[ "Linear" , "Log" ],
+		"tools1":[ "Equality line" ],
+		"tools2":[ "Regression lines" ],
+		"xAxisLimitDefaults":[ 0.0 , 3.0 ],
+		"yAxisLimitDefaults":[ 0.0 , 1400 ],
+		"intro":"",
+		"axisLimitTypeSelected":"Fixed",
+		"axisTypeSelected":"Linear"
+	}
+}
+
